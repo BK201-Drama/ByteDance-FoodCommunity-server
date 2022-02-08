@@ -1,0 +1,20 @@
+{
+  "name": "@byteinpsire/cloud-project-template-express",
+  "version": "0.0.8",
+  "files": [
+    "*",
+    "!.*",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "@byteinspire/api": "*",
+    "express": "^4.17.1",
+    "multer": "^1.4.4"
+  },
+  "repository": {},
+  "license": "ISC",
+  "scripts": {},
+  "description": "此项目运行在[轻服务云工程](https://qingfuwu.cn/docs/cloud-project/quickstart.html)中。",
+  "main": "index.js",
+  "author": ""
+}
