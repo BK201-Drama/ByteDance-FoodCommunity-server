@@ -67,12 +67,25 @@ class menuService {
     return result;
   }
 
-  async showMenu (username, menu_id) {
+  async showMenu (menu_id) {
     const res = await MenuTable.where({
-      username: username,
       menu_id: menu_id
     }).findOne();
 
+    return res;
+  }
+
+  async showMenuPart (menu_id) {
+    const res = await MenuTable.where({
+      menu_id: menu_id
+    }).projection({
+      menu_id: 1,
+      title: 1,
+      synopsis: 1,
+      menu_pic: 1,
+      like_num: 1
+    }).findOne();
+    
     return res;
   }
 
@@ -91,7 +104,7 @@ class menuService {
       menu_pic: 1,
       like_num: 1
     }).find();
-    
+
     return res;
   }
 

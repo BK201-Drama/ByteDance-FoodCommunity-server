@@ -80,6 +80,19 @@ class aboutConcernService {
     const result = await AboutConcernTable.save(res2);
     return result;
   }
+
+  async isConcern (username, username_concerned) {
+    const res = await AboutConcernTable.where({
+      username: username
+    }).findOne();
+
+    for (let item of res.concern) {
+      if (item.username !== username_concerned) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 module.exports = new aboutConcernService();
