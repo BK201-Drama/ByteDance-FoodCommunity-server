@@ -81,6 +81,20 @@ class menuService {
     return res;
   }
 
+  async menuListByUser (username) {
+    const res = await MenuTable.where({
+      username: username
+    }).projection({
+      menu_id: 1,
+      title: 1,
+      synopsis: 1,
+      menu_pic: 1,
+      like_num: 1
+    }).find();
+    
+    return res;
+  }
+
   async searchMenuByLabel () {
     
   }

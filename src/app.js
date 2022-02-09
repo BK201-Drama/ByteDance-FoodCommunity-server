@@ -16,7 +16,7 @@ app.use(express.json());
 // 为应用使用路由定义
 // 待办事项业务路由
 app.use('/api/todo', todoRouter);
-app.use('/api/rks', uploadRouter);
+app.use('/api', uploadRouter);
 
 // 若无匹配业务路由，则匹配 404 路由，代表访问路径不存在
 app.use(notFound);

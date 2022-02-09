@@ -3,9 +3,10 @@ const {
 } = require('../models/Table');
 
 class loginService {
-  async updatePassword (username, newPwd) {
+  async updatePassword (username, password, newPwd) {
     const res = await UserTable.where({
-      username: username
+      username: username,
+      password: password
     }).findOne();
 
     res.password = newPwd;
