@@ -34,9 +34,9 @@ class listingService {
       menu_id: menu_id
     }).findOne();
 
-    const result = await GoodsTable.delete(res);
+    await GoodsTable.delete(res);
 
-    return result;
+    return res;
   }
 }
 

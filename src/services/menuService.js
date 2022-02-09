@@ -6,7 +6,7 @@ class menuService {
   async addMenu (MenuObject) {
     const res = await MenuTable.create({
       username: MenuObject.username,
-      menu_id: undefined,
+      menu_id: '123',
       title: MenuObject.title,
       menu_pic: MenuObject.menu_pic,
       synopsis: MenuObject.synopsis,
@@ -15,7 +15,7 @@ class menuService {
       step: MenuObject.step,
       classification: MenuObject.classification,
       Tips: MenuObject.Tips,
-      like_num: MenuObject.like_num
+      like_num: 0
     });
 
     res.menu_id = res._id;
@@ -31,8 +31,8 @@ class menuService {
       menu_id: menu_id
     });
 
-    const result = await MenuTable.delete(res);
-    return result;
+    await MenuTable.delete(res);
+    return res;
   }
 
   async updateMenu (MenuObject) {
@@ -108,7 +108,7 @@ class menuService {
     return res;
   }
 
-  async searchMenuByLabel () {
+  async searchMenuByTag () {
     
   }
 }
