@@ -115,6 +115,9 @@ class menuService {
     return res;
   }
 
+  /**
+   * 这个部分可能会有一些问题，all方法的使用的问题
+   */
   async searchMenuByTag (classify_name) {
     const res = await MenuTable.where({
       classification: db.all([classify_name])
