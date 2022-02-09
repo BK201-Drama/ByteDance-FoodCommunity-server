@@ -88,11 +88,17 @@ class menuController {
   }
 
   async listAllMenu (req, res) {
-    
+    const result = await menuService.menuList();
+    res.send(result);
   }
 
   async listMenuByTag (req, res) {
+    const {
+      classify_name
+    } = req.query;
 
+    const result = await menuService.searchMenuByTag(classify_name);
+    res.send(result);
   }
 }
 

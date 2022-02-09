@@ -1,6 +1,7 @@
 const {
   MenuTable
-} = require('../models/Table')
+} = require('../models/Table');
+const db = inspirecloud.db;
 
 class menuService {
   async addMenu (MenuObject) {
@@ -90,7 +91,13 @@ class menuService {
   }
 
   async menuList () {
-    const res = await MenuTable.where().find();
+    const res = await MenuTable.where().projection({
+      menu_id: 1,
+      title: 1,
+      synopsis: 1,
+      menu_pic: 1,
+      like_num: 1
+    }).find();
     return res;
   }
 
@@ -108,8 +115,17 @@ class menuService {
     return res;
   }
 
-  async searchMenuByTag () {
-    
+  async searchMenuByTag (classify_name) {
+    const res = await MenuTable.where({
+      classification: db.all([classify_name])
+    }).projection({
+      menu_id: 1,
+      title: 1,
+      synopsis: 1,
+      menu_pic: 1,
+      like_num: 1
+    }).find();
+    return res;
   }
 }
 
