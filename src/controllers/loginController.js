@@ -10,7 +10,9 @@ class loginController {
   async sign (req, res) {
     const {username, password} = req.body;
     const result = await loginService.sign(username, password);
-    res.send(result);
+    res.send({
+      data: result
+    });
   }
 
   async updatePassword (req, res) {
