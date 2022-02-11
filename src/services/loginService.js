@@ -15,7 +15,7 @@ class loginService {
   }
 
   async sign (newUsername, newPwd) {
-    const res = await UserTable.create({
+    const res = await UserTable.save({
       username: newUsername,
       password: newPwd
     });

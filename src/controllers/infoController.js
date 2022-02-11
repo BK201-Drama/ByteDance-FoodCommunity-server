@@ -1,7 +1,6 @@
 const infoService = require('../services/infoService');
 const aboutConcernService = require('../services/aboutConcernService');
 const menuService = require('../services/menuService');
-const { updateUserInfo } = require('../services/infoService');
 
 class infoController {
   async listInfo (req, res) {
@@ -40,14 +39,14 @@ class infoController {
       signature
     } = req.body;
 
-    const result = await updateUserInfo ({
-      username,
-      Avatar,
-      address,
-      join_time,
-      concern_num,
-      concerned_num,
-      signature
+    const result = await infoService.updateUserInfo ({
+      username: username,
+      Avatar: Avatar,
+      address: address,
+      join_time: join_time,
+      concern_num: concern_num,
+      concerned_num: concerned_num,
+      signature: signature
     });
 
     res.send(result);

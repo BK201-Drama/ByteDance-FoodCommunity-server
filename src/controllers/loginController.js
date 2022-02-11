@@ -3,12 +3,15 @@ const loginService = require('../services/loginService');
 class loginController {
   async login (req, res) {
     const {username, password} = req.body;
+
     const result = await loginService.login(username, password);
     res.send(result);
   }
 
   async sign (req, res) {
+    console.log(req.username);
     const {username, password} = req.body;
+
     const result = await loginService.sign(username, password);
     res.send({
       data: result
@@ -17,6 +20,7 @@ class loginController {
 
   async updatePassword (req, res) {
     const {username, password, newPwd} = req.body;
+
     const result = await loginService.updatePassword(username, password, newPwd);
     res.send(result);
   }

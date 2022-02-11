@@ -15,6 +15,6 @@ function wrap(handler) {
 
 router.get('/info', wrap(infoController.listInfo));
 router.get('/menu', wrap(infoController.listMyMenu));
-router.patch('/menu', wrap(infoController.updateMyInfo));
+router.patch('/info', wrap(infoController.updateMyInfo));
 
 module.exports = router;

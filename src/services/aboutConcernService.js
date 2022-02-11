@@ -44,18 +44,22 @@ class aboutConcernService {
       username: username
     }).findOne();
 
-    res.concern.push(ConcernObject)
+    res.concern.push({
+      username: ConcernObject.username_concerned,
+      Avatar: ConcernObject.Avatar_concerned
+    })
     await AboutConcernTable.save(res)
 
     const res2 = await AboutConcernTable.where({
-      username: ConcernObject.username
+      username: ConcernObject.username_concerned
     }).findOne();
+
     res2.concerned.push({
       username: username,
       Avatar: Avatar
     })
-
     const result = await AboutConcernTable.save(res2)
+
     return result
   }
 
@@ -65,13 +69,13 @@ class aboutConcernService {
     }).findOne();
 
     res.concern = res.concern.filter((item) => {
-      return item.username != ConcernObject.username;
+      return item.username != ConcernObject.username_concerned; 
     })
 
     await AboutConcernTable.save(res)
 
     const res2 = await AboutConcernTable.where({
-      username: ConcernObject.username
+      username: ConcernObject.username_concerned
     }).findOne();
     res2.concerned = res2.concerned.filter((item) => {
       return item.username != username;

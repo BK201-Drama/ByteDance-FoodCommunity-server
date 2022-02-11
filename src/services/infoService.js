@@ -17,6 +17,8 @@ class infoService {
       username: newInfo.username
     }).findOne();
 
+    console.log(newInfo);
+
     res.Avatar = newInfo.Avatar;
     res.address = newInfo.address;
     res.signature = newInfo.signature;

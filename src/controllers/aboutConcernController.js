@@ -23,9 +23,11 @@ class aboutConcernController {
 
     await aboutConcernService.addConcern(      
       username,
-      username_concerned,
       Avatar,
-      Avatar_concerned
+      {
+        username_concerned,
+        Avatar_concerned
+      }
     )
     
     const concernedNumber = await aboutConcernService.returnConcernedNumber(username_concerned);
@@ -39,15 +41,15 @@ class aboutConcernController {
     const {
       username,
       username_concerned,
-      Avatar,
       Avatar_concerned
     } = req.body;
 
-    await aboutConcernService.cancelConcern(      
+    await aboutConcernService.deleteConcern(      
       username,
-      username_concerned,
-      Avatar,
-      Avatar_concerned
+      {
+        username_concerned,
+        Avatar_concerned
+      }
     )
     
     const concernedNumber = await aboutConcernService.returnConcernedNumber(username_concerned);

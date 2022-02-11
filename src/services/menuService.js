@@ -1,11 +1,10 @@
 const {
   MenuTable
 } = require('../models/Table');
-const db = inspirecloud.db;
 
 class menuService {
   async addMenu (MenuObject) {
-    const res = await MenuTable.create({
+    const res = await MenuTable.save({
       username: MenuObject.username,
       menu_id: '123',
       title: MenuObject.title,
@@ -33,7 +32,9 @@ class menuService {
     });
 
     await MenuTable.delete(res);
-    return res;
+    return {
+      data: 123
+    };
   }
 
   async updateMenu (MenuObject) {
@@ -119,16 +120,16 @@ class menuService {
    * 这个部分可能会有一些问题，all方法的使用的问题
    */
   async searchMenuByTag (classify_name) {
-    const res = await MenuTable.where({
-      classification: db.all([classify_name])
-    }).projection({
-      menu_id: 1,
-      title: 1,
-      synopsis: 1,
-      menu_pic: 1,
-      like_num: 1
-    }).find();
-    return res;
+    // const res = await MenuTable.where({
+    //   classification: db.all([classify_name])
+    // }).projection({
+    //   menu_id: 1,
+    //   title: 1,
+    //   synopsis: 1,
+    //   menu_pic: 1,
+    //   like_num: 1
+    // }).find();
+    // return res;
   }
 }
 

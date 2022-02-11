@@ -1,5 +1,4 @@
 const express = require('express');
-const aboutConcernController = require('../controllers/aboutConcernController');
 const router = express.Router();
 
 const aboutConcernController = require('../controllers/aboutConcernController');
