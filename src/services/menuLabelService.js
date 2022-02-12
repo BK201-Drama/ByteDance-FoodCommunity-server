@@ -4,7 +4,11 @@ const {
 
 class menuLabelService {
   async listAllLabel () {
-    const res = await MenuLabelTable.where().find();
+    const res = await MenuLabelTable.where().projection({
+      _id: 0,
+      createdAt: 0,
+      updatedAt: 0
+    }).find();
     return res;
   }
 
