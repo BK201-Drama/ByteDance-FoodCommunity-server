@@ -4,6 +4,7 @@ const {
 
 class commentService {
   async addComment (username, Avatar, menu_id, comment) {
+
     const res = await MenuMapCommentTable.where({
       menu_id: menu_id
     }).findOne();
@@ -15,6 +16,7 @@ class commentService {
     });
 
     const result = await MenuMapCommentTable.save(res);
+
     return result;
   }
 
@@ -37,6 +39,7 @@ class commentService {
   }
 
   async listComment (menu_id) {
+    
     const res = await MenuMapCommentTable.where({
       menu_id: menu_id
     }).projection({
@@ -44,6 +47,7 @@ class commentService {
       createdAt: 0,
       updatedAt: 0
     }).findOne();
+
     return res;
   }
 }
