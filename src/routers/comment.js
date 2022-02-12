@@ -15,6 +15,6 @@ function wrap(handler) {
 
 router.post('/addComment', wrap(commentController.addComment));
 router.post('/deleteComment', wrap(commentController.deleteComment));
-router.post('/commentList', wrap(commentController.listComment));
+router.get('/commentList', wrap(commentController.listComment));
 
 module.exports = router;

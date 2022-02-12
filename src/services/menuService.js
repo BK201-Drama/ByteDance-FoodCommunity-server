@@ -12,13 +12,12 @@ class menuService {
       synopsis: MenuObject.synopsis,
       material: MenuObject.material,
       practice: MenuObject.practice,
-      step: MenuObject.step,
       classification: MenuObject.classification,
       Tips: MenuObject.Tips,
       like_num: 0
     });
 
-    res.menu_id = res._id;
+    res.menu_id = String(res._id);
  
     const result = await MenuTable.save(res);
 
@@ -26,14 +25,17 @@ class menuService {
   }
 
   async deleteMenu (username, menu_id) {
-    const res = await MenuTable.where({
-      username: username,
-      menu_id: menu_id
-    });
 
-    await MenuTable.delete(res);
+    console.log(username, menu_id);
+    const res = await MenuTable.where({
+      username,
+      menu_id
+    }).find();
+
+    const deleteNum = await MenuTable.delete(res);
     return {
-      data: 123
+      ...deleteNum,
+      data: res
     };
   }
 
@@ -49,7 +51,6 @@ class menuService {
     res.synopsis = MenuObject.synopsis;
     res.material = MenuObject.material;
     res.practice = MenuObject.practice;
-    res.step = MenuObject.step;
     res.classification = MenuObject.classification;
     res.Tips = MenuObject.Tips;
     res.like_num = MenuObject.like_num;
@@ -120,16 +121,28 @@ class menuService {
    * 这个部分可能会有一些问题，all方法的使用的问题
    */
   async searchMenuByTag (classify_name) {
-    // const res = await MenuTable.where({
-    //   classification: db.all([classify_name])
-    // }).projection({
-    //   menu_id: 1,
-    //   title: 1,
-    //   synopsis: 1,
-    //   menu_pic: 1,
-    //   like_num: 1
-    // }).find();
-    // return res;
+    const res = await MenuTable.where({}).projection({
+      menu_id: 1,
+      title: 1,
+      synopsis: 1,
+      menu_pic: 1,
+      classification: 1,
+      like_num: 1
+    }).find();
+
+    const resp = res.filter((item) => {
+      let classification = item.classification;
+
+      for (let arr_item of classification) {
+
+        if (arr_item.classify_name === classify_name) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    return resp;
   }
 }
 

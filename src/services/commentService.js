@@ -28,7 +28,7 @@ class commentService {
       const standard2 = item.Avatar != Avatar;
       const standard3 = item.comment_content != comment;
 
-      return standard1 && standard2 && standard3;
+      return standard1 || standard2 || standard3;
     });
 
     const result = await MenuMapCommentTable.save(res);
@@ -39,7 +39,11 @@ class commentService {
   async listComment (menu_id) {
     const res = await MenuMapCommentTable.where({
       menu_id: menu_id
-    }).find();
+    }).projection({
+      _id: 0,
+      createdAt: 0,
+      updatedAt: 0
+    }).findOne();
     return res;
   }
 }

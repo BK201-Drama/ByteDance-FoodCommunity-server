@@ -15,14 +15,14 @@ class menuController {
     } = req.body;
 
     const result = await menuService.addMenu({
-      username,
-      title,
-      menu_pic,
-      synopsis,
-      material,
-      practice,
-      classification,
-      Tips
+      username: username,
+      title: title,
+      menu_pic: menu_pic,
+      synopsis: synopsis,
+      material: material,
+      practice: practice,
+      classification: classification,
+      Tips: Tips
     });
 
     res.send(result);

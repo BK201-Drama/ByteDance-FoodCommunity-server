@@ -39,14 +39,15 @@ class listController {
   }
 
   async showListingList (req, res) {
-    const {username} = req.body;
+    const {username} = req.query;
 
+    const myList = await listingService.listingList(username);
     const result = await Promise.all(
       myList.map(async (item) => {
         const res = await menuService.showMenuPart(item.menu_id);
         return res;
       })
-    )
+    );
 
     res.send({
       username: username,
@@ -55,7 +56,7 @@ class listController {
   }
 
   async isListing (req, res) {
-    const {username, menu_id} = req.body;
+    const {username, menu_id} = req.query;
 
     const isListed = await listingService.isListing(username, menu_id);
 

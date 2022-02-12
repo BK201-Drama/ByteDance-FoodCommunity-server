@@ -5,9 +5,10 @@ const uploadRouter = require('./routers/upload');
 const loginRouter = require('./routers/login');
 const infoRouter = require('./routers/info');
 const aboutConcernRouter = require('./routers/aboutConcern');
-// const menuRouter = require('./routers/menu');
-// const menuLabelRouter = require('./routers/menuLabel');
+const menuRouter = require('./routers/menu');
+const menuLabelRouter = require('./routers/menuLabel');
 const listRouter = require('./routers/listing');
+const CommentRouter = require('./routers/comment');
 
 const express = require('express');
 
@@ -27,9 +28,10 @@ app.use('/api', uploadRouter);
 app.use('/api', loginRouter);
 app.use('/api', infoRouter);
 app.use('/api', aboutConcernRouter);
-// app.use('/api', menuRouter);
-// app.use('/api', menuLabelRouter);
+app.use('/api', menuRouter);
+app.use('/api', menuLabelRouter);
 app.use('/api', listRouter);
+app.use('/api', CommentRouter);
 
 // 若无匹配业务路由，则匹配 404 路由，代表访问路径不存在
 app.use(notFound);
