@@ -6,7 +6,8 @@ class loginService {
   async updatePassword (username, password, newPwd) {
     const res = await UserTable.where({
       username: username,
-      password: password
+      password: password,
+      Avatar: ''
     }).findOne();
 
     res.password = newPwd;

@@ -5,16 +5,12 @@ class loginController {
     const {username, password} = req.body;
 
     const result = await loginService.login(username, password);
-    if (result.length) {
-      res.send({
-        message: "no"
-      })
-    }
-    res.send(result);
+    res.send({
+      data: result
+    });
   }
 
   async sign (req, res) {
-    console.log(req.username);
     const {username, password} = req.body;
 
     const result = await loginService.sign(username, password);

@@ -95,6 +95,7 @@ class menuService {
   async menuList () {
     const res = await MenuTable.where().projection({
       menu_id: 1,
+      username: 1,
       title: 1,
       synopsis: 1,
       menu_pic: 1,
