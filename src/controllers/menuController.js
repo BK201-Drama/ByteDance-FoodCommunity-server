@@ -95,7 +95,7 @@ class menuController {
         const Avatar = await loginService.showUserAvatar(item.username);
         return {
           ...item,
-          Avatar: Avatar
+          Avatar: Avatar.Avatar
         }
       })
     );
