@@ -6,8 +6,7 @@ class loginService {
   async updatePassword (username, password, newPwd) {
     const res = await UserTable.where({
       username: username,
-      password: password,
-      Avatar: ''
+      password: password
     }).findOne();
 
     res.password = newPwd;
@@ -27,6 +26,15 @@ class loginService {
     const res = await UserTable.where({
       username: username,
       password: password
+    }).findOne();
+    return res;
+  }
+
+  async showUserAvatar (username) {
+    const res = await UserTable.where({
+      username: username
+    }).projection({
+      Avatar: 1
     }).findOne();
     return res;
   }
