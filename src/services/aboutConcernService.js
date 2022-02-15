@@ -90,6 +90,10 @@ class aboutConcernService {
       username: username
     }).findOne();
 
+    if (res.concern.length <= 0) {
+      return false;
+    }
+
     for (let item of res.concern) {
       if (item.username !== username_concerned) {
         return false;
