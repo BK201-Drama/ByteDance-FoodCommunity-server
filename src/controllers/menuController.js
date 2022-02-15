@@ -114,7 +114,7 @@ class menuController {
   async avatar (req, res) {
     const { username } = req.query;
     const result = await loginService.showUserAvatar(username);
-    return result;
+    res.send(result)
   }
 }
 
