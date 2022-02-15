@@ -20,5 +20,6 @@ router.post('/like', wrap(menuController.likeMenu));
 router.get('/menu/:menu_id', wrap(menuController.showMenu));
 router.get('/menuList', wrap(menuController.listAllMenu));
 router.get('/menuTagList', wrap(menuController.listMenuByTag));
+router.get('/avatar', wrap(menuController.avatar));
 
 module.exports = router;

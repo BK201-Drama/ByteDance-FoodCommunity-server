@@ -16,5 +16,6 @@ function wrap(handler) {
 router.post('/login', wrap(loginController.login));
 router.post('/sign', wrap(loginController.sign));
 router.post('/updatePwd', wrap(loginController.updatePassword));
+router.get('/getAvatar', wrap(loginController.Avatar));
 
 module.exports = router;

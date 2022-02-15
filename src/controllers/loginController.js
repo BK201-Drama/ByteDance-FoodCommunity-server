@@ -25,6 +25,12 @@ class loginController {
     const result = await loginService.updatePassword(username, password, newPwd);
     res.send(result);
   }
+
+  async Avatar (req, res) {
+    const { username } = req.query;
+    const result = await loginService.showUserAvatar(username);
+    res.send(result);
+  }
 }
 
 module.exports = new loginController();

@@ -110,6 +110,12 @@ class menuController {
     const result = await menuService.searchMenuByTag(classify_name);
     res.send(result);
   }
+
+  async avatar (req, res) {
+    const { username } = req.query;
+    const result = await loginService.showUserAvatar(username);
+    return result;
+  }
 }
 
 module.exports = new menuController();
