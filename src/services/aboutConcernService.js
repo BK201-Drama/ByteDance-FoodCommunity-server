@@ -95,11 +95,11 @@ class aboutConcernService {
     }
 
     for (let item of res.concern) {
-      if (item.username !== username_concerned) {
-        return false;
+      if (item.username === username_concerned) {
+        return true;
       }
     }
-    return true;
+    return false;
   }
 }
 
