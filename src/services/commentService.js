@@ -50,6 +50,23 @@ class commentService {
 
     return res;
   }
+
+  async addContainer (menu_id) {
+    const res = await MenuMapCommentTable.save({
+      menu_id: menu_id,
+      comments: []
+    })
+    return res;
+  }
+
+  async deleteContainer (menu_id) {
+    const res = await MenuMapCommentTable.where({
+      menu_id: menu_id
+    }).findOne();
+
+    const deleteNum = await MenuMapCommentTable.delete(res);
+    return deleteNum;
+  }
 }
 
 module.exports = new commentService();
