@@ -154,6 +154,13 @@ class menuService {
       synopsis: reg
     }).or({
       Tips: reg
+    }).projection({
+      menu_id: 1,
+      title: 1,
+      synopsis: 1,
+      menu_pic: 1,
+      classification: 1,
+      like_num: 1
     }).find();
     return res;
   }

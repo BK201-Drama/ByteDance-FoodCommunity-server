@@ -101,6 +101,15 @@ class aboutConcernService {
     }
     return false;
   }
+
+  async createNewPeople (username) {
+    const res = await AboutConcernTable.save({
+      username: username,
+      concern: [],
+      concerned: []
+    })
+    return res;
+  }
 }
 
 module.exports = new aboutConcernService();

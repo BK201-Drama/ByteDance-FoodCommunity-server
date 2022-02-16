@@ -13,6 +13,7 @@ function wrap(handler) {
   };
 }
 
+
 router.post('/Listing', wrap(listController.addListing));
 router.post('/deleteListing', wrap(listController.cancelListing));
 router.get('/Listing', wrap(listController.showListingList));

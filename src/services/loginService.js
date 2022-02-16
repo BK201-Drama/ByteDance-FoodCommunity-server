@@ -17,7 +17,8 @@ class loginService {
   async sign (newUsername, newPwd) {
     const res = await UserTable.save({
       username: newUsername,
-      password: newPwd
+      password: newPwd,
+      Avatar: 'https://bk201-drama.app.cloudendpoint.cn/uploads/1645016155726.jpg'
     });
     return res;
   }

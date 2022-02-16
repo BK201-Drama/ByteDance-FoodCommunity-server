@@ -26,6 +26,17 @@ class infoService {
     const result = await InfoTable.save(res);
     return result;
   }
+
+  async addNewInfo (username) {
+    const res = await InfoTable.save({
+      username: username,
+      Avatar: 'https://bk201-drama.app.cloudendpoint.cn/uploads/1644585241674.jpg',
+      address: 'none',
+      join_time: 1644585305,
+      signature: '我的低调，不是你们装逼的资本'
+    })
+    return res;
+  }
 }
 
 module.exports = new infoService();

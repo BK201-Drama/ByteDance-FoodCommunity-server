@@ -13,6 +13,7 @@ function wrap(handler) {
   };
 }
 
+
 router.post('/addComment', wrap(commentController.addComment));
 router.post('/deleteComment', wrap(commentController.deleteComment));
 router.get('/commentList', wrap(commentController.listComment));

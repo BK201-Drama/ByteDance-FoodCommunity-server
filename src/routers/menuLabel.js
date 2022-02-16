@@ -13,6 +13,7 @@ function wrap(handler) {
   };
 }
 
+
 router.get('/tagList', wrap(menuLabelController.listAllLabel));
 
 module.exports = router;

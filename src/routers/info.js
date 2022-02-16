@@ -13,6 +13,7 @@ function wrap(handler) {
   };
 }
 
+
 router.get('/info', wrap(infoController.listInfo));
 router.get('/menu', wrap(infoController.listMyMenu));
 router.patch('/info', wrap(infoController.updateMyInfo));

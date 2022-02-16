@@ -1,4 +1,6 @@
 const loginService = require('../services/loginService');
+const infoService = require('../services/infoService');
+const aboutConcernService = require('../services/aboutConcernService');
 
 class loginController {
   async login (req, res) {
@@ -14,6 +16,8 @@ class loginController {
     const {username, password} = req.body;
 
     const result = await loginService.sign(username, password);
+    await infoService.addNewInfo(username);
+    await aboutConcernService.createNewPeople(username);
     res.send({
       data: result
     });
