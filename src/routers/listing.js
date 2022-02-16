@@ -14,7 +14,7 @@ function wrap(handler) {
 }
 
 router.post('/Listing', wrap(listController.addListing));
-router.delete('/Listing', wrap(listController.cancelListing));
+router.post('/deleteListing', wrap(listController.cancelListing));
 router.get('/Listing', wrap(listController.showListingList));
 router.get('/isList', wrap(listController.isListing));
 
