@@ -16,5 +16,8 @@
   "scripts": {},
   "description": "此项目运行在[轻服务云工程](https://qingfuwu.cn/docs/cloud-project/quickstart.html)中。",
   "main": "index.js",
-  "author": ""
+  "author": "",
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.6"
+  }
 }
