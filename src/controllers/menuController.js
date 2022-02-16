@@ -110,7 +110,16 @@ class menuController {
     } = req.query;
 
     const result = await menuService.searchMenuByTag(classify_name);
-    res.send(result);
+    const list = await Promise.all(
+      result.map(async (item) => {
+        const Avatar = await loginService.showUserAvatar(item.username);
+        return {
+          ...item,
+          Avatar: Avatar.Avatar
+        }
+      })
+    );
+    res.send(list);
   }
 
   async avatar (req, res) {
@@ -122,7 +131,16 @@ class menuController {
   async searchMenu (req, res) {
     const { input } = req.body;
     const result = await menuService.searchMenuByInput(input);
-    res.send(result);
+    const list = await Promise.all(
+      result.map(async (item) => {
+        const Avatar = await loginService.showUserAvatar(item.username);
+        return {
+          ...item,
+          Avatar: Avatar.Avatar
+        }
+      })
+    );
+    res.send(list);
   }
 }
 
