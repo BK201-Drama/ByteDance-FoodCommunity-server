@@ -112,7 +112,8 @@ class menuService {
       title: 1,
       synopsis: 1,
       menu_pic: 1,
-      like_num: 1
+      like_num: 1,
+      username: 1
     }).find();
 
     return res;
@@ -128,7 +129,8 @@ class menuService {
       synopsis: 1,
       menu_pic: 1,
       classification: 1,
-      like_num: 1
+      like_num: 1,
+      username: 1
     }).find();
 
     const resp = res.filter((item) => {
@@ -160,7 +162,8 @@ class menuService {
       synopsis: 1,
       menu_pic: 1,
       classification: 1,
-      like_num: 1
+      like_num: 1,
+      username: 1
     }).find();
     return res;
   }
