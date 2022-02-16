@@ -34,7 +34,7 @@ class listingService {
       menu_id: menu_id
     }).findOne();
 
-    await GoodsTable.delete(res);
+    await ListingTable.delete(res);
 
     return res;
   }

@@ -116,6 +116,12 @@ class menuController {
     const result = await loginService.showUserAvatar(username);
     res.send(result)
   }
+
+  async searchMenu (req, res) {
+    const { input } = req.body;
+    const result = await menuService.searchMenuByInput(input);
+    res.send(result);
+  }
 }
 
 module.exports = new menuController();

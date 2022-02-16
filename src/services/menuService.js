@@ -145,6 +145,18 @@ class menuService {
 
     return resp;
   }
+
+  async searchMenuByInput (input) {
+    const reg = new RegExp(input, 'g');
+    const res = await MenuTable.where({
+      title: reg
+    }).or({
+      synopsis: reg
+    }).or({
+      Tips: reg
+    });
+    return res;
+  }
 }
 
 module.exports = new menuService();
