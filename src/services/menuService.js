@@ -154,7 +154,7 @@ class menuService {
       synopsis: reg
     }).or({
       Tips: reg
-    });
+    }).find();
     return res;
   }
 }
