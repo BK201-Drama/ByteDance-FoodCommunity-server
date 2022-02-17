@@ -59,7 +59,11 @@ class infoController {
       signature: signature
     });
 
-    res.send(result);
+    res.send({
+      ...result,
+      concern_num: concern_num,
+      concerned_num: concerned_num,
+    });
   }
 }
 

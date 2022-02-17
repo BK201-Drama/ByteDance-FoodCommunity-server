@@ -25,9 +25,9 @@ class menuController {
       classification: classification,
       Tips: Tips
     });
-    await commentService.addContainer(menu_pic);
+    await commentService.addContainer(result.menu_id);
     // const k = await commentService.
-    res.send(result);
+    await res.send(result);
   }
 
   async deleteMenu (req, res) {
