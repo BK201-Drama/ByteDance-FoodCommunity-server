@@ -86,7 +86,8 @@ class menuService {
       title: 1,
       synopsis: 1,
       menu_pic: 1,
-      like_num: 1
+      like_num: 1,
+      username: 1
     }).findOne();
     
     return res;

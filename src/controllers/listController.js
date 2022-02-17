@@ -1,5 +1,6 @@
 const listingService = require('../services/listingService');
 const menuService = require('../services/menuService');
+const loginService = require('../services/loginService');
 
 class listController {
   async addListing (req, res) {
@@ -49,9 +50,19 @@ class listController {
       })
     );
 
+    const list = await Promise.all(
+      result.map(async (item) => {
+        const Avatar = await loginService.showUserAvatar(item.username);
+        return {
+          ...item,
+          Avatar: Avatar.Avatar
+        }
+      })
+    );
+
     res.send({
       username: username,
-      listing: result
+      listing: list
     });
   }
 

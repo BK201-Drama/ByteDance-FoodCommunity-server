@@ -1,6 +1,7 @@
 const infoService = require('../services/infoService');
 const aboutConcernService = require('../services/aboutConcernService');
 const menuService = require('../services/menuService');
+const loginService = require('../services/loginService');
 
 class infoController {
   async listInfo (req, res) {
@@ -18,9 +19,18 @@ class infoController {
   async listMyMenu (req, res) {
     const {username} = req.query;
     const menuList = await menuService.menuListByUser(username);
+    const list = await Promise.all(
+      menuList.map(async (item) => {
+        const Avatar = await loginService.showUserAvatar(item.username);
+        return {
+          ...item,
+          Avatar: Avatar.Avatar
+        }
+      })
+    );
     res.send({
       username: username,
-      menu_list: menuList
+      menu_list: list
     })
   }
 
